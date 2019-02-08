@@ -31,59 +31,59 @@
 8. Wait until the images are pulled and both containers are started
 9. Wait until the nginx container has finished starting, after the file `volumes/server-nginx-certbot/cache/dhparams.pem` wait 2 moe seconds and the container is ready
 10. Perform the VS Code task `nginx--update-configuration`
-   This task will create the nginx configuration which performs the http to https redirection using locally generated self-signed certificates.
-   Use either the VS Code UI  
-   1. Press Ctrl + Shift + P
-   2. Type `Run Task` and select `Tasks: Run Task`
-   3. Press Enter
-   4. Select the task `nginx--update-configuration`
-   5. Press enter again 
-   6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
-   1. Change to the cloned directory  
-      `cd docker-app--tine20`
-   2. Run the task manually  
-      `/bin/bash bash-util/elevate.sh root bash-commands--custom/nginx--update-configuration.sh . default.docker-compose application`
-   3. Confirm the fullscreen prompt with your password
+    This task will create the nginx configuration which performs the http to https redirection using locally generated self-signed certificates.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `nginx--update-configuration`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh root bash-commands--custom/nginx--update-configuration.sh . default.docker-compose application`
+    3. Confirm the fullscreen prompt with your password
 11. Perform the VS Code task `chromium--open-application-url`
-   This task will tell Chromium to open the url https://localhost.
-   Use either the VS Code UI  
-   1. Press Ctrl + Shift + P
-   2. Type `Run Task` and select `Tasks: Run Task`
-   3. Press Enter
-   4. Select the task `chromium--open-application-url`
-   5. Press enter again 
-   6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
-   1. Change to the cloned directory  
-      `cd docker-app--tine20`
-   2. Run the task manually  
-      `/bin/bash bash-util/elevate.sh ${USER} bash-commands--custom/chromium--open-application-url.sh . default.docker-compose`
-   3. Confirm the fullscreen prompt with your password
+    This task will tell Chromium to open the url https://localhost.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `chromium--open-application-url`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh ${USER} bash-commands--custom/chromium--open-application-url.sh . default.docker-compose`
+    3. Confirm the fullscreen prompt with your password
 12. Now Chromium is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Chromium to show the content anyway.
-   1. Click on `Advanced`
-   2. Then click on `Proceed to localhost (unsafe)`
+    1. Click on `Advanced`
+    2. Then click on `Proceed to localhost (unsafe)`
 13. Now the tine20 login page is visible, log in with the pre-defined credentials (defined in [container.env](container.env)).
-   - user: `admin`
-   - pass: `secureadminpassword`
+    - user: `admin`
+    - pass: `secureadminpassword`
 14. Now the more-or-less working version of http to https redirection has been performed. If the same page is opened with Firefox, the login page is stuck loading forever.
 15. Perform the VS Code task `browser--open-application-url`
-   This task will tell the default web browser (Firefox) to open the url https://localhost.
-   Use either the VS Code UI  
-   1. Press Ctrl + Shift + P
-   2. Type `Run Task` and select `Tasks: Run Task`
-   3. Press Enter
-   4. Select the task `browser--open-application-url`
-   5. Press enter again 
-   6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
-   1. Change to the cloned directory  
-      `cd docker-app--tine20`
-   2. Run the task manually  
-      `/bin/bash bash-util/elevate.sh ${USER} bash-commands/browser--open-application-url.sh . default.docker-compose`
-   3. Confirm the fullscreen prompt with your password
+    This task will tell the default web browser (Firefox) to open the url https://localhost.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `browser--open-application-url`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh ${USER} bash-commands/browser--open-application-url.sh . default.docker-compose`
+    3. Confirm the fullscreen prompt with your password
 16. Now Firefox is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Firefox to show the content anyway.
-   1. Click on `Advanced`
-   2. Then click on `Add Exception...`
-   3. Uncheck option `Permanently store this exception`
-   4. Click on `Confirm Security Exception`
+    1. Click on `Advanced`
+    2. Then click on `Add Exception...`
+    3. Uncheck option `Permanently store this exception`
+    4. Click on `Confirm Security Exception`
 17. Now the tine20 login page is stuck loading (for unknown reason).
 
 The used nginx configuration can be found [here](https://github.com/talsen-team/docker-nginx-certbot/blob/master/docker/server-nginx-certbot/rootfs/templates/vhost.template.conf).
