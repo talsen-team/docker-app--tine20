@@ -57,7 +57,6 @@
        `cd docker-app--tine20`
     2. Run the task manually  
        `/bin/bash bash-util/elevate.sh ${USER} bash-commands--custom/chromium--open-application-url.sh . default.docker-compose`
-    3. Confirm the fullscreen prompt with your password
 12. Now Chromium is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Chromium to show the content anyway.
     1. Click on `Advanced`
     2. Then click on `Proceed to localhost (unsafe)`
@@ -78,7 +77,6 @@
        `cd docker-app--tine20`
     2. Run the task manually  
        `/bin/bash bash-util/elevate.sh ${USER} bash-commands/browser--open-application-url.sh . default.docker-compose`
-    3. Confirm the fullscreen prompt with your password
 16. Now Firefox is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Firefox to show the content anyway.
     1. Click on `Advanced`
     2. Then click on `Add Exception...`
