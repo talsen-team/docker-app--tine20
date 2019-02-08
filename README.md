@@ -112,3 +112,7 @@ Do the same steps as described [above](#to-reproduce-the-issue-with-hostname-loc
 11. Change the value of the variable `HOST_SERVICE_URL` in your [host.env](host.env) to `http://tine.private`.
 12. Continue with step 11 from the section [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
 13. Now both Chromium and Firefox should be both stuck on the tine20 login page (for unknown reason).
+
+## the desired infrastructure setup visualized
+
+![images/infrastructure-setup.png](images/infrastructure-setup.png "the desired infrastructure setup visualized")

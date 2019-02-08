@@ -25,6 +25,9 @@
 !docker-compose/
 !docker-compose/server--tine20/
 !docker-compose/server--tine20/default.docker-compose
+!images/
+!images/infrastructure-setup.png
+!images/infrastructure-setup.xml
 !.gitignore
 !.gitmodules
 !container.env
