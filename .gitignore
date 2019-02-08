@@ -2,6 +2,21 @@
 
 !bash-commands
 !bash-util
+!docker/
+!docker/server--tine20/
+!docker/server--tine20/rootfs/
+!docker/server--tine20/rootfs/etc/
+!docker/server--tine20/rootfs/etc/logrotate.d/
+!docker/server--tine20/rootfs/etc/logrotate.d/tine20-tinebase
+!docker/server--tine20/rootfs/etc/tine20/
+!docker/server--tine20/rootfs/etc/tine20/php7.2.ini
+!docker/server--tine20/rootfs/opt/
+!docker/server--tine20/rootfs/opt/server--tine20/
+!docker/server--tine20/rootfs/opt/server--tine20/entrypoint.sh
+!docker/server--tine20/rootfs/templates/
+!docker/server--tine20/rootfs/templates/apache.conf
+!docker/server--tine20/rootfs/templates/config.inc.php.dist
+!docker/server--tine20/default.docker
 !docker-compose/
 !docker-compose/server--tine20/
 !docker-compose/server--tine20/default.docker-compose

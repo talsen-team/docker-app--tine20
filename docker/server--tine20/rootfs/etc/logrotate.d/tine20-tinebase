@@ -1,0 +1,9 @@
+/var/log/tine20/*.log {
+  daily
+  rotate 30
+  create 640 www-data adm
+  compress
+  delaycompress
+  missingok
+  notifempty
+}

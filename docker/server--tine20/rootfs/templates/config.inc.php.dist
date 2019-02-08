@@ -1,0 +1,205 @@
+<?php
+/** GLOBAL CONFIGURATION FILE WITH DOCUMENTATION
+ *
+ * NOTE: You can either:
+ *  - copy this file to config.inc.php (must be in php include_path) and add change config values
+ *  - create an empty config.inc.php, make it writeable to the webserver and edit config via the setup.php interface
+ *  - make tine20 root directory temporary writeable to the webserver and edit config via the setup.php interface
+ *
+ * @license     http://www.gnu.org/licenses/agpl.html AGPL Version 3
+ * @copyright   Copyright (c) 2007-2016 Metaways Infosystems GmbH (http://www.metaways.de)
+ *
+ * TODO move several config values and their documentation to the application config classes (APPNAME_Config)
+ */
+
+return array(
+    /*************************************************************************
+     /*----------------------- DATABASE  -----------------------------------*/
+    /************************************************************************/
+
+    //CONECTIVITY WITH DOMAIN DATABASE
+    'database' =>
+        array (
+            'username' => '${TINE20_DB_USERNAME}',
+            'password' => '${TINE20_DB_USERPASS}',
+            'host' => '${TINE20_DB_LOCATION}',
+            'dbname' => '${TINE20_DB_NAME}',
+            'port' => 3306,
+            'adapter' => 'pdo_mysql',
+            'tableprefix' => 'tine20_',
+            'profiler' => false
+        ),
+    /*************************************************************************
+    /*------------------------- GENERAL CONFIGURATION-----------------------*/
+    /************************************************************************/
+
+    //MAINTENANCE MODE
+    // in maintenanceMode only users of the defaultAdminGroup can login and operate
+    'maintenanceMode'   => false,
+
+    //APPLICATION ADMINISTRATOR ACCOUNT (SETUP ACCESS)
+    'setupuser' =>
+        array (
+            'username' => '${TINE20_SETUP_USERNAME}',
+            'password' => '${TINE20_SETUP_USERPASS}',
+        ),
+
+    //TEMPORARY FILES
+    'tmpdir' => '/var/lib/tine20/tmp',
+
+    //TEMPORARY UPLOAD FILES
+    'filesdir' => '/var/lib/tine20/files',
+
+    //SESSIONS
+    'session' =>
+        array (
+            'lifetime' => 86400,
+            'backend' => 'File',
+            'path' => '/var/lib/tine20/session'
+        ),
+
+    //DATA CACHE
+    'caching' =>
+        array (
+            'customexpirable' => false,
+            'active' => true,
+            'backend' => 'File',
+            'lifetime' => 900,
+            'path' => '/var/lib/tine20/cache',
+
+            //REDIS
+            'redis' =>
+            array (
+                    'host' => 'localhost',
+                    'port' => 6379,
+                ),
+
+            //MEMCACHED
+            'memcached' =>
+                array (
+                    'host' => 'localhost',
+                    'port' => 11211,
+                ),
+        ),
+
+    /*************************************************************************
+    /*------------------------------ ADDRESSBOOK ----------------------------*/
+    /************************************************************************/
+
+    /* AVAILABILITY MAP
+     * 'mapPanel': used in several files (among them,
+     * "ContactEditDialog.js", enables support to availability
+     * contact map.
+    */
+    'mapPanel' => 0,
+
+    /*************************************************************************
+    /*--------------------------- DEVELOPMENT ------------------------------*/
+    /************************************************************************/
+    //APPLICATION LOG RESOURCE
+    /* 'active': if resource is enabled(booleano);
+     * 'priority': captured event detail level. How high
+     *             the level, more details (and data) will be inserted as
+     *             content of log file. Levels are:
+     *
+     *               0=EMERGENCY
+     *               1=ALERT
+     *               2=CRITICAL
+     *               3=ERROR
+     *               4=WARN
+     *               5=NOTICE
+     *               6=INFO
+     *               7=DEBUG
+     *               8=TRACE
+     *
+     * 'filename': where log file is.*/
+
+    'logger' =>
+        array (
+            'active' => true,
+            'priority' => ${TINE20_LOG_LEVEL},
+            'filename' => '/var/log/tine20/tine20.log',
+        ),
+
+    //PROFILER RESOURCE SUPPORT
+    'profiler' =>
+        array (
+            'xhprof' => false,
+            'queryProfiles' => false,
+            'queryProfilesDetails' => false
+        ),
+    /*************************************************************************
+    /*---------------------------- MESSAGES --------------------------------*/
+    /************************************************************************/
+
+    //MESSAGE QUEUE VIA REDIS
+    'actionqueue' =>
+        array (
+            'active' => false,
+            'backend' => 'Redis',
+            'host' => 'localhost',
+            'port' => 6379,
+        ),
+
+    /*************************************************************************
+    /*------------------------------ SECURITY ------------------------------*/
+    /************************************************************************/
+
+    //MAXIMUM NUMBER OF USEFUL LOGIN TRIALS BEFORE LOCKING USER
+    'maxLoginFailures' => 20,
+
+    //CAPTCHA (ANTI ROBOT TOOL FOR AUTHENTICATION SCREEN)
+    'captcha' =>
+        array (
+            'count' => 3,
+        ),
+
+    /* CORS REQUEST COMPATIBILITY
+     * 'allowedJsonOrigins': used into "Config.php" e "Json.php".
+     * Define URLs/IPs that allow exchange of JSON in out of HTTP
+     * headers requests for complaining CORS.
+    */
+    'allowedJsonOrigins' =>
+        array (
+            0 => '',
+            1 => '',
+        ),
+
+    /* SESSION IP VALIDATION
+     * 'sessionIpValidation': used into some scripts, is
+     * responsible for validating user session by IP (access
+     * constraint to a logon).
+    */
+    'sessionIpValidation' =>
+        array (
+            'active' => false,
+            'source' => 'ip',
+        ),
+
+    /* DIGITAL CERTIFICATE
+     * 'certificate': used to definition of digital certificate.
+    */
+    'certificate' =>
+        array (
+            'active' => false,
+            'useKeyEscrow' => false,
+            'masterCertificate' => '',
+        ),
+    'modssl' =>
+        array (
+            'username_callback' => '',
+            'casfile' => '',
+            'crlspath' => '',
+        ),
+
+    /*************************************************************************
+    /*-------------------------- VISUALIZATION -----------------------------*/
+    /************************************************************************/
+
+    // USED THEME CONFIGURATIONS
+    'theme' => array(
+                'load' => true,
+                'path' => '',
+                'useBlueAsBase' => true
+        ),
+);
