@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+echo "Installing dependencies ..."
+apt-get install -y --no-install-recommends \
+                curl
+echo "Installing dependencies ... done"
+
 echo "Add VS Code repository to apt-get ..."
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
