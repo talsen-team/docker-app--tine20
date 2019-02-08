@@ -6,6 +6,14 @@
 
 The server application tine20 ready to run inside a docker container.
 
+## container startup modes
+
+The containers have two different modes of startup.
+The first mode is executing the tine20 setup and continues with the second mode, the second mode just runs tine20.
+
+Whether the tine20 setup was performed already is detected whether the file "/var/lib/tine20/setup/.setup-was-successful" exists inside the container.
+To persist this information the volume /var/lib/tine20/setup is mapped to the host.
+
 ## how to use
 
 To easily experiment with draw-io, the following pre-requisites are preferred:
