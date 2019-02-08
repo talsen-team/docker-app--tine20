@@ -1,3 +1,6 @@
 [submodule "bash-util"]
 	path = bash-util
 	url = https://github.com/talsen-team/docker-util--bash-util.git
+[submodule "bash-commands"]
+	path = bash-commands
+	url = https://github.com/talsen-team/docker-util--bash-commands.git
