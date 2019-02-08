@@ -104,4 +104,5 @@ To apply changes to nginx perform the following command:
 1. Attach to the nginx container  
    `sudo docker exec -it server-nginx-certbot /bin/bash`
 2. Reload nginx configuration
-   `nginx -s reload`
+   `nginx -s reload`  
+   The warnings regardng `ssl_stapling` can be ignored (they come from the self-signed certificates)
