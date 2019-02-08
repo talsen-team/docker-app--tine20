@@ -55,3 +55,10 @@ echo "Install ssh-askpass-fullscreen ..."
 apt-get install -y --no-install-recommends \
                 ssh-askpass-fullscreen
 echo "Install ssh-askpass-fullscreen ... done"
+
+echo "Install chromium-browser ..."
+apt-get install -y --no-install-recommends \
+                chromium-browser
+echo "Install chromium-browser ... done"
+
+
