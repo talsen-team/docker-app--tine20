@@ -1,5 +1,7 @@
 *
 
+!.vscode/
+!.vscode/tasks.json
 !bash-commands
 !bash-util
 !docker/

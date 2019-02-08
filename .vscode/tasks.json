@@ -1,0 +1,225 @@
+{
+    "version":                "2.0.0",
+    "tasks":
+    [
+        {
+            "label":          "browser--open-application-url",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "${USER}",
+                              "bash-commands/browser--open-application-url.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--compose--create",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--compose--create.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--compose--down",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--compose--down.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--compose--up",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--compose--up.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--container--kill",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--container--kill.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--container--restart",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--container--restart.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--container--start",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--container--start.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--container--stop",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--container--stop.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--image--build",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--image--build.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--image--rebuild",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--image--rebuild.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--log--container-info",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--log--container-info.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--log--container-log",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--log--container-log.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--system--clean",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--system--clean.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--system--prune",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--system--prune.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":          "docker-compose--volumes--wipe-local",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands/docker-compose--volumes--wipe-local.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
+            "label":         "git--pull-and-update-submodules",
+            "type":          "shell",
+            "command":       "/bin/bash",
+            "args": [
+                             "bash-commands/git--pull-and-update-submodules.sh",
+            ],
+            "problemMatcher": [ ],
+        },
+    ]
+}
