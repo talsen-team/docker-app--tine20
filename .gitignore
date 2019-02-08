@@ -3,6 +3,8 @@
 !.vscode/
 !.vscode/tasks.json
 !bash-commands
+!bash-commands--custom/
+!bash-commands--custom/nginx--update-configuration.sh
 !bash-util
 !docker/
 !docker/server--tine20/
@@ -27,4 +29,5 @@
 !container.env
 !host.env
 !LICENCE
+!nginx.env
 !README.md

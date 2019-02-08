@@ -1,16 +1,31 @@
 version:            '3'
 
 services:
+  server--nginx-certbot:
+    container_name: 'server-nginx-certbot'
+    env_file:
+      -             './../../nginx.env'
+    image:          'talsenteam/docker-nginx-certbot:v1.15-alpine'
+    network_mode:   'host'
+    restart:        'no'
+    volumes:
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/../nginx.env:/etc/nginx/env/application.env:ro'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/cache/:/cache'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/manual-config/:/manual-config:ro'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/etc/letsencrypt/:/etc/letsencrypt'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/var/lib/letsencrypt/:/var/lib/letsencrypt'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/var/log/letsencrypt/:/var/log/letsencrypt'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/var/log/nginx/:/var/log/nginx'
   server--tine20:
-    build:
-      context:      './../../docker/server--tine20'
-      dockerfile:   'default.docker'
+#    build:
+#      context:      './../../docker/server--tine20'
+#      dockerfile:   'default.docker'
     container_name: 'server--tine20'
     env_file:
       -             './../../container.env'
     image:          'talsenteam/docker-tine20:v2018.08.9'
     ports:
-      -             '80:80'
+      -             '30080:80'
     restart:        'no'
     volumes:
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/etc/tine20:/etc/tine20'

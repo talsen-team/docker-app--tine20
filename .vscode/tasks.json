@@ -221,5 +221,20 @@
             ],
             "problemMatcher": [ ],
         },
+        {
+            "label":         "nginx--update-configuration",
+            "type":          "shell",
+            "command":       "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "root",
+                              "bash-commands--custom/nginx--update-configuration.sh",
+                              ".",
+                              "default.docker-compose",
+                              "application",
+            ],
+            "problemMatcher": [ ],
+        },
     ]
 }
