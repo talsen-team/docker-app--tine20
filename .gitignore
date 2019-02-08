@@ -28,6 +28,7 @@
 !.gitmodules
 !container.env
 !host.env
+!install-dependencies.sh
 !LICENCE
 !nginx.env
 !README.md
