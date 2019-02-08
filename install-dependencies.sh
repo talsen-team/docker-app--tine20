@@ -60,5 +60,3 @@ echo "Install chromium-browser ..."
 apt-get install -y --no-install-recommends \
                 chromium-browser
 echo "Install chromium-browser ... done"
-
-
