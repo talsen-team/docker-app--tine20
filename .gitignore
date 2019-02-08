@@ -4,6 +4,7 @@
 !.vscode/tasks.json
 !bash-commands
 !bash-commands--custom/
+!bash-commands--custom/chromium--open-application-url.sh
 !bash-commands--custom/nginx--update-configuration.sh
 !bash-util
 !docker/

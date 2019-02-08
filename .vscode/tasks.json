@@ -222,6 +222,20 @@
             "problemMatcher": [ ],
         },
         {
+            "label":          "chromium--open-application-url",
+            "type":           "shell",
+            "command":        "/bin/bash",
+            "args":
+            [
+                              "bash-util/elevate.sh",
+                              "${USER}",
+                              "bash-commands--custom/chromium--open-application-url.sh",
+                              ".",
+                              "default.docker-compose",
+            ],
+            "problemMatcher": [ ],
+        },
+        {
             "label":         "nginx--update-configuration",
             "type":          "shell",
             "command":       "/bin/bash",
