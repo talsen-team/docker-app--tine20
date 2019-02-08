@@ -22,4 +22,5 @@
 !docker-compose/server--tine20/default.docker-compose
 !.gitignore
 !.gitmodules
+!host.env
 !LICENCE
