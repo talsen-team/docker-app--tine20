@@ -2,6 +2,9 @@
 
 !bash-commands
 !bash-util
+!docker-compose/
+!docker-compose/server--tine20/
+!docker-compose/server--tine20/default.docker-compose
 !.gitignore
 !.gitmodules
 !LICENCE
