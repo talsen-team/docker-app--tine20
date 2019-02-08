@@ -1,73 +1,88 @@
-# docker-app: tine20
+# docker-app: tine20 -- issue - extra reverse proxy
 
-[![Docker Automated build](https://img.shields.io/docker/automated/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
-[![Docker Build Status](https://img.shields.io/docker/build/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
+## To reproduce the issue with hostname *localhost* (problem occurring in Firefox), perform the following steps:
 
-The server application tine20 ready to run inside a docker container.
-
-## container startup modes
-
-The containers have two different modes of startup.
-The first mode is executing the tine20 setup and continues with the second mode, the second mode just runs tine20.
-
-Whether the tine20 setup was already performed is detected whether the file "/var/lib/tine20/setup/.setup-was-successful" exists inside the container.
-To persist this information the volume /var/lib/tine20/setup is mapped to the host.
-
-## how to use
-
-To easily experiment with draw-io, the following pre-requisites are preferred:
-
-1. Install [VS Code](https://code.visualstudio.com/), to easily use predefined [tasks](.vscode/tasks.json)
-2. Install any [ssh-askpass](https://man.openbsd.org/ssh-askpass.1) to handle sudo prompts required for docker  
-   (VS Code does not run as root user, so in order to perform sudo operations the [`sudo --askpass CMD`](bash/util/elevate.sh) feature is used)
-3. Install docker (at least version 18.09.1, build 4c52b90)
-4. Install docker-compose (at least version 1.21.2, build a133471)
-
-Then open the cloned repository directory with VS Code and use any of the custom tasks.
-
-## custom VS Code tasks
-
-Any docker-compose--* tasks refer to the default [dockerfile](docker/server--draw-io/default.docker) and [docker-compose](docker-compose/server--draw-io/default.docker-compose) configuration if required for command execution.
-
-- browser--*
-  - [browser--open-application-url](bash-commands/browser--open-application-url.sh)  
-    Opens the localhost docekr service URL in the default web-browser. The opened URL is defined in [host.env](host.env) by the variable HOST_SERVICE_URL.
-- docker-compose--*
-  - docker-compose--compose--*
-    - [docker-compose--compose--create](bash-commands/docker-compose--compose--create.sh)  
-      Creates required docker containers and docker networks but does not start them.
-    - [docker-compose--compose--down](bash-commands/docker-compose--compose--down.sh)  
-      Stops and removes required docker containers and docker networks.
-    - [docker-compose--compose--up](bash-commands/docker-compose--compose--up.sh)  
-      Creates and starts required docker containers and docker networks.
-  - docker-compose--container--*
-    - [docker-compose--container--kill](bash-commands/docker-compose--container--kill.sh)  
-      Kills all running containers declared by the compose configuration.
-    - [docker-compose--container--restart](bash-commands/docker-compose--container--restart.sh)  
-      Restarts all containers declared by the compose configuration (if they were created before).
-    - [docker-compose--container--start](bash-commands/docker-compose--container--start.sh)  
-      Starts all containers declared by the compose configuration (if they were created before).
-    - [docker-compose--container--stop](bash-commands/docker-compose--container--stop.sh)  
-      Stops all running containers declared by the compose configuration.
-  - docker-compose--image--*
-    - [docker-compose--image--build](bash-commands/docker-compose--image--build.sh)  
-      Builds all required docker images referenced by the compose configuration (using build cache).
-    - [docker-compose--image--rebuild](bash-commands/docker-compose--image--rebuild.sh)  
-      Builds all required docker images referenced by the compose configuration (without using build cache).
-  - docker-compose--log--*
-    - [docker-compose--log--container-info](bash-commands/docker-compose--log--container-info.sh)  
-      Prints general conntainer informations regarding the compose configuration to the console.
-    - [docker-compose--log--container-log](bash-commands/docker-compose--log--container-log.sh)  
-      Prints logs of running containers declared by the compose configuration to the console.
-  - docker-compose--system--*
-    - [docker-compose--system--clean](bash-commands/docker-compose--system--clean.sh)  
-      Removes local dangling docker containers, images and networks.
-    - [docker-compose--system--prune](bash-commands/docker-compose--system--prune.sh)  
-      Prunes the local docker system.
-  - docker-compose--volumes--*
-    - [docker-compose--volumes--wipe-local](bash-commands/docker-compose--volumes--wipe-local.sh)  
-      Wipes local volume mapping directories, located in the subdirectory 'volumes/', if there are any.
-- git--*
-  - [git--pull-and-update-submodules](bash-commands/git--pull-and-update-submodules.sh)  
-    Rebase pulls the latest repository changes and the updates all git submodules if there are any.
+1. Setup Ubuntu Bionic Desktop (minimal installation) in a virtual machine
+2. Install system updates and git   
+   1. `sudo apt-get update`  
+   2. `sudo apt-get dist-upgrade`
+   3. `sudo apt-get install git`
+3. Clone this repository with this branch checked out  
+   `git clone https://github.com/talsen-team/docker-app--tine20.git --recurse-submodules --branch=issue--tine20-extra-reverse-proxy`
+4. Install additional dependencies and perform required modifications to the system  
+   `sudo /bin/bash docker-app--tine20/install-dependencies.sh`
+5. After the script finishes open the clone repository with VS Code  
+   `code docker-app--tine20`
+6. Perform the VS Code task `docker-compose--compose--up`  
+   This task will pull required docker images and create required docker containers and networks.  
+   Use either the VS Code UI  
+   1. Press Ctrl + Shift + P
+   2. Type `Run Task`
+   3. Press Enter
+   4. Select the task `docker-compose--compose--up`
+   5. Press enter again 
+   6. Confirm the fullscreen prompt with your password
+  Or use the terminal:  
+   1. Change to the cloned directory  
+      `cd docker-app--tine20`
+   2. Run the task manually  
+      `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--compose--up.sh . default.docker-compose`
+   3. Confirm the fullscreen prompt with your password
+7. Wait until the images are pulled and both containers are started
+8. Wait until the nginx container has finished starting, after the file `volumes/server-nginx-certbot/cache/dhparams.pem` wait 2 moe seconds and the container is ready
+9. Perform the VS Code task `nginx--update-configuration`
+   This task will create the nginx configuration which performs the http to https redirection using locally generated self-signed certificates.
+   Use either the VS Code UI  
+   1. Press Ctrl + Shift + P
+   2. Type `Run Task`
+   3. Press Enter
+   4. Select the task `nginx--update-configuration`
+   5. Press enter again 
+   6. Confirm the fullscreen prompt with your password
+  Or use the terminal:  
+   1. Change to the cloned directory  
+      `cd docker-app--tine20`
+   2. Run the task manually  
+      `/bin/bash bash-util/elevate.sh root bash-commands--custom/nginx--update-configuration.sh . default.docker-compose application`
+   3. Confirm the fullscreen prompt with your password
+10. Perform the VS Code task `chromium--open-application-url`
+   This task will tell Chromium to open the url https://localhost.
+   Use either the VS Code UI  
+   1. Press Ctrl + Shift + P
+   2. Type `Run Task`
+   3. Press Enter
+   4. Select the task `chromium--open-application-url`
+   5. Press enter again 
+   6. Confirm the fullscreen prompt with your password
+  Or use the terminal:  
+   1. Change to the cloned directory  
+      `cd docker-app--tine20`
+   2. Run the task manually  
+      `/bin/bash bash-util/elevate.sh ${USER} bash-commands--custom/chromium--open-application-url.sh . default.docker-compose`
+   3. Confirm the fullscreen prompt with your password
+11. Now Chromium is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Chromium to show the content anyway.
+   1. Click on ``
+   2. Click on ``
+12. Now the tine20 login page is visible, log in with the pre-defined credentials (defined in [container.env](container.env)).
+   - user: `admin`
+   - pass: `secureadminpassword`
+13. Now the more-or-less working version of http to https redirection has been performed. If the same page is opened with Firefox, the login page is stuck loading forever.
+14. Perform the VS Code task `browser--open-application-url`
+   This task will tell the default web browser (Firefox) to open the url https://localhost.
+   Use either the VS Code UI  
+   1. Press Ctrl + Shift + P
+   2. Type `Run Task`
+   3. Press Enter
+   4. Select the task `browser--open-application-url`
+   5. Press enter again 
+   6. Confirm the fullscreen prompt with your password
+  Or use the terminal:  
+   1. Change to the cloned directory  
+      `cd docker-app--tine20`
+   2. Run the task manually  
+      `/bin/bash bash-util/elevate.sh ${USER} bash-commands/browser--open-application-url.sh . default.docker-compose`
+   3. Confirm the fullscreen prompt with your password
+15. Now Firefox is open and showing the url https://localhost, prompting you trying to access unsecure web content (due to self-signed certificates). Tell Firefox to show the content anyway.
+   1. Click on ``
+   2. Click on ``
+16. Now the tine20 login page is stuck loading (for unknown reason).
