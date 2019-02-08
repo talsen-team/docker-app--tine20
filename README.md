@@ -1,6 +1,6 @@
 # docker-app: tine20 -- issue - extra reverse proxy
 
-## To reproduce the issue with hostname *localhost* (problem occurring in Firefox), perform the following steps:
+## To reproduce the issue with hostname **localhost** (problem occurring in Firefox), perform the following steps:
 
 1. Setup Ubuntu Bionic Desktop (minimal installation) in a virtual machine
 2. Install system updates and git   
@@ -106,3 +106,7 @@ To apply changes to nginx perform the following command:
 2. Reload nginx configuration
    `nginx -s reload`  
    The warnings regardng `ssl_stapling` can be ignored (they come from the self-signed certificates)
+
+## To reproduce the issue with hostname **tine.private** (problem occurring in both Chromium and Firefox), perform the following steps:
+
+Do the same steps as in #to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps
