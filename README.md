@@ -22,6 +22,7 @@
    4. Select the task `docker-compose--compose--up`
    5. Press enter again 
    6. Confirm the fullscreen prompt with your password
+
   Or use the terminal:  
    1. Change to the cloned directory  
       `cd docker-app--tine20`
@@ -39,6 +40,7 @@
    4. Select the task `nginx--update-configuration`
    5. Press enter again 
    6. Confirm the fullscreen prompt with your password
+
   Or use the terminal:  
    1. Change to the cloned directory  
       `cd docker-app--tine20`
@@ -54,6 +56,7 @@
    4. Select the task `chromium--open-application-url`
    5. Press enter again 
    6. Confirm the fullscreen prompt with your password
+
   Or use the terminal:  
    1. Change to the cloned directory  
       `cd docker-app--tine20`
@@ -76,6 +79,7 @@
    4. Select the task `browser--open-application-url`
    5. Press enter again 
    6. Confirm the fullscreen prompt with your password
+   
   Or use the terminal:  
    1. Change to the cloned directory  
       `cd docker-app--tine20`
