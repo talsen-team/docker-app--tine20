@@ -60,3 +60,9 @@ echo "Install chromium-browser ..."
 apt-get install -y --no-install-recommends \
                 chromium-browser
 echo "Install chromium-browser ... done"
+
+echo "Adding domain tine.private to /etc/hosts ..."
+echo ""                             >> /etc/hosts
+echo "# custom configuration"       >> /etc/hosts
+echo "127.0.0.1       tine.private" >> /etc/hosts
+echo "Adding domain tine.private to /etc/hosts ... done"
