@@ -13,7 +13,7 @@ services:
       -             '80:80'
     restart:        'no'
     volumes:
-      -             '${ENV_PATH_VOLUMES_ROOT}/server--tine/etc/tine20:/etc/tine20'
-      -             '${ENV_PATH_VOLUMES_ROOT}/server--tine/var/lib/mysql:/var/lib/mysql'
-      -             '${ENV_PATH_VOLUMES_ROOT}/server--tine/var/lib/tine20/files:/var/lib/tine20/files'
-      -             '${ENV_PATH_VOLUMES_ROOT}/server--tine/var/lib/tine20/setup:/var/lib/tine20/setup'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/etc/tine20:/etc/tine20'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/mysql:/var/lib/mysql'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/tine20/files:/var/lib/tine20/files'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/tine20/setup:/var/lib/tine20/setup'
