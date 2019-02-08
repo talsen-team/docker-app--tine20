@@ -6,18 +6,8 @@ services:
       context:      './../../docker/server--tine20'
       dockerfile:   'default.docker'
     container_name: 'server--tine20'
-    environment:
-      -             'ENV_TINE20_DB_LOCATION=localhost'
-      -             'ENV_TINE20_DB_NAME=tine20db'
-      -             'ENV_TINE20_DB_USERNAME=tine20user'
-      -             'ENV_TINE20_DB_USERPASS=securetine20pw'
-      -             'ENV_TINE20_LOG_LEVEL=7'
-      -             'ENV_TINE20_ADMIN_NAME=admin'
-      -             'ENV_TINE20_ADMIN_PASS=secureadminpassword'
-      -             'ENV_TINE20_SETUP_NAME=tine20setup'
-      -             'ENV_TINE20_SETUP_PASS=securesetuppassword'
-      -             'ENV_TIMEZONE=Europe/Berlin'
-      -             'ENV_SERVER_NAME=localhost'
+    env_file:
+      -             './../../container.env'
     image:          'talsenteam/docker-tine:v2018.08.9'
     ports:
       -             '80:80'
