@@ -16,7 +16,7 @@ To persist this information the volume /var/lib/tine20/setup is mapped to the ho
 
 ## how to use
 
-To easily experiment with draw-io, the following pre-requisites are preferred:
+To easily experiment with tine20, the following pre-requisites are preferred:
 
 1. Install [VS Code](https://code.visualstudio.com/), to easily use predefined [tasks](.vscode/tasks.json)
 2. Install any [ssh-askpass](https://man.openbsd.org/ssh-askpass.1) to handle sudo prompts required for docker  
@@ -28,11 +28,11 @@ Then open the cloned repository directory with VS Code and use any of the custom
 
 ## custom VS Code tasks
 
-Any docker-compose--* tasks refer to the default [dockerfile](docker/server--draw-io/default.docker) and [docker-compose](docker-compose/server--draw-io/default.docker-compose) configuration if required for command execution.
+Any docker-compose--* tasks refer to the default [dockerfile](docker/server--tine20/default.docker) and [docker-compose](docker-compose/server--tine20/default.docker-compose) configuration if required for command execution.
 
 - browser--*
   - [browser--open-application-url](bash-commands/browser--open-application-url.sh)  
-    Opens the localhost docekr service URL in the default web-browser. The opened URL is defined in [host.env](host.env) by the variable HOST_SERVICE_URL.
+    Opens the localhost docker service URL in the default web-browser. The opened URL is defined in [host.env](host.env) by the variable HOST_SERVICE_URL.
 - docker-compose--*
   - docker-compose--compose--*
     - [docker-compose--compose--create](bash-commands/docker-compose--compose--create.sh)  
