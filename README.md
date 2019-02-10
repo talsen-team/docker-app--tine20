@@ -109,9 +109,38 @@ To apply changes to nginx perform the following command:
 
 Do the same steps as described [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps) until step 10 inclusive.
 
-11. Change the value of the variable `HOST_SERVICE_URL` in your [host.env](host.env) to `http://tine.private`.
-12. Continue with step 11 from the section [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
-13. Now both Chromium and Firefox should be both stuck on the tine20 login page (for unknown reason).
+11. Change the value of the variable `HOST_SERVICE_URL` in your [host.env](host.env) file to `http://tine.private`.
+12. Change the value of the variable `ENV_SERVER_NAME` in your [container.env](container.env) file to `tine.private`
+13. If you have the containers up and running from the above example, perform the VS Code task `docker-compose--compose--down`
+    This task will stop and remove running containers and used docker networks.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `docker-compose--compose--down`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--compose--down.sh . default.docker-compose`
+    3. Confirm the fullscreen prompt with your password
+14. If you have a volumes directory (leftovers from the above example), perform the VS Code task `docker-compose--volumes--wipe-local`
+    This task will wipe the locally mapped volumes and restore a default environment for the containers to be created next.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `docker-compose--volumes--wipe-local`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--volumes--wipe-local.sh . default.docker-compose`
+    3. Confirm the fullscreen prompt with your password
+15. Continue with step 7 from the section [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
+16. Now both Chromium and Firefox should be both stuck on the tine20 login page (for unknown reason).
 
 ## the desired infrastructure setup visualized
 
