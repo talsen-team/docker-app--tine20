@@ -189,7 +189,7 @@ To use your custom apache2 configuration perform the following steps:
    Open your [docker-compose/server--tine20/default.docker-compose](docker-compose/server--tine20/default.docker-compose) file, uncommment lines 20 - 22 and save the file
 2. Adjust your local apache2 configuration for the tine20 container  
    Open your [docker/server--tine20/rootfs/templates/apache2.conf](docker/server--tine20/rootfs/templates/apache2.conf) file, adjust the configuration as you desire and save the file
-3. Build the tine20 docker image locally by performing the VS Code task `docker-compose--image--renbuild`
+3. Build the tine20 docker image locally by performing the VS Code task `docker-compose--image--renbuild`.  
     This task will rebuild all configured docker images in the docker compose configuration without using the build cache.
     Use either the VS Code UI  
     1. Press Ctrl + Shift + P
