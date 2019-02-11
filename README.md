@@ -167,7 +167,7 @@ To use your custom nginx configuration for the locally provided domains `localho
       2. Run the task manually  
          `/bin/bash bash-util/elevate.sh root bash-commands--custom/nginx--update-configuration.sh . default.docker-compose application`
       3. Confirm the fullscreen prompt with your password
-   2. **Or** create the containers and start with step 7. of [the first example](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
+   2. **Or** create the containers and start with step 7. of [the steps from above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
 6. After executing the VS Code task `nginx--update-configuration` you should see the following messages in the VS Code terminal:  
    `...
    Rendering vhost configuration for 'localhost' from '/manual-config/localhost.conf'.
@@ -176,11 +176,35 @@ To use your custom nginx configuration for the locally provided domains `localho
    ...`
 
    If you see instead the following output:
-   
+
    `...
    Rendering vhost configuration for 'tine.private' from '/templates/vhost.template.conf'.
    ...`  
    in the output the custom configuration was not used (double check if the above steps were done correctly).
+
+## use your custom apache2 configuration for experimenting
+
+To use your custom apache2 configuration perform the following steps:
+1. Uncomment the build configuration in the docker-compose file for docker service server--tine20.  
+   Open your [docker-compose/server--tine20/default.docker-compose](docker-compose/server--tine20/default.docker-compose) file, uncommment lines 20 - 22 and save the file
+2. Adjust your local apache2 configuration for the tine20 container  
+   Open your [docker/server--tine20/rootfs/templates/apache2.conf](docker/server--tine20/rootfs/templates/apache2.conf) file, adjust the configuration as you desire and save the file
+3. Build the tine20 docker image locally by performing the VS Code task `docker-compose--image--renbuild`
+    This task will rebuild all configured docker images in the docker compose configuration without using the build cache.
+    Use either the VS Code UI  
+    1. Press Ctrl + Shift + P
+    2. Type `Run Task` and select `Tasks: Run Task`
+    3. Press Enter
+    4. Select the task `docker-compose--image--renbuild`
+    5. Press enter again 
+    6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+    1. Change to the cloned directory  
+       `cd docker-app--tine20`
+    2. Run the task manually  
+       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--image--rebuild.sh . default.docker-compose`
+    3. Confirm the fullscreen prompt with your password
+4. Wait until the (re-)build has finished and then recreate the docker containers by continuing at step 7. of the steps described [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
+5. Each time you ajust the apache template file, just rebuild the image again, afterwards recreate the docker containers and finally do not forget to reload the nginx configuration
 
 ## the desired infrastructure setup visualized
 
