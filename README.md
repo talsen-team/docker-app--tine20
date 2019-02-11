@@ -153,7 +153,7 @@ To use your custom nginx configuration for the locally provided domains `localho
 4. Create a link for the domain `tine.private`  
    `$( cd volumes/server-nginx-certbot/manual-config/ && sudo ln -fs localhost.conf tine.private.conf )`
 5. Reload the nginx configuration  
-   1. If the nginx container is already running perform the VS Code task `nginx--update-configuration`
+   1. If the nginx container is already running perform the VS Code task `nginx--update-configuration`  
       This task will create the nginx configuration which performs the http to https   redirection using locally generated self-signed certificates.
       Use either the VS Code UI  
       1. Press Ctrl + Shift + P
