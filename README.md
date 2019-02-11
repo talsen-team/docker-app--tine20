@@ -173,8 +173,10 @@ To use your custom nginx configuration for the locally provided domains `localho
    Rendering vhost configuration for 'localhost' from '/manual-config/localhost.conf'.
    ...
    Rendering vhost configuration for 'tine.private' from '/manual-config/tine.private.conf'.
-   ...`  
-   If you see instead the following output:  
+   ...`
+
+   If you see instead the following output:
+   
    `...
    Rendering vhost configuration for 'tine.private' from '/templates/vhost.template.conf'.
    ...`  
