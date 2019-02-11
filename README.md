@@ -206,6 +206,11 @@ To use your custom apache2 configuration perform the following steps:
 4. Wait until the (re-)build has finished and then recreate the docker containers by continuing at step 7. of the steps described [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
 5. Each time you ajust the apache template file, just rebuild the image again, afterwards recreate the docker containers and finally do not forget to reload the nginx configuration
 
+## general hint
+
+If nginx runs into a `Unable to connect` error when opening / reloading the web browser, check if the nginx configuration has been generated and reloaded (perform VS Code task `nginx--update-configuration`).
+The nginx configuration must be generated each time the nginx container gets (re-)created.
+
 ## the desired infrastructure setup visualized
 
 ![images/infrastructure-setup.png](images/infrastructure-setup.png "the desired infrastructure setup visualized")
