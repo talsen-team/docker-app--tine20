@@ -142,6 +142,44 @@ Do the same steps as described [above](#to-reproduce-the-issue-with-hostname-loc
 15. Continue with step 7 from the section [above](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
 16. Now both Chromium and Firefox should be both stuck on the tine20 login page (for unknown reason).
 
+## use your custom nginx configuration for experimenting
+
+To use your custom nginx configuration for the locally provided domains `localhost` and `tine.private` perform the following steps:
+1. Create the manual nginx configuration directory  
+   `sudo mkdir -p volumes/server-nginx-certbot/manual-config/`
+2. Create your custom configuration for domain name `localhost`  
+   `sudo gedit volumes/server-nginx-certbot/manual-config/localhost.conf`
+3. Paste your content into the text editor gedit and save the file.
+4. Create a link for the domain `tine.private`  
+   `$( cd volumes/server-nginx-certbot/manual-config/ && sudo ln -fs localhost.conf tine.private.conf )`
+5. Reload the nginx configuration  
+   1. If the nginx container is already running perform the VS Code task `nginx--update-configuration`
+      This task will create the nginx configuration which performs the http to https   redirection using locally generated self-signed certificates.
+      Use either the VS Code UI  
+      1. Press Ctrl + Shift + P
+      2. Type `Run Task` and select `Tasks: Run Task`
+      3. Press Enter
+      4. Select the task `nginx--update-configuration`
+      5. Press enter again 
+      6. Confirm the fullscreen prompt with your password, **Or** use the terminal:  
+      1. Change to the cloned directory  
+       `cd docker-app--tine20`
+      2. Run the task manually  
+         `/bin/bash bash-util/elevate.sh root bash-commands--custom/nginx--update-configuration.sh . default.docker-compose application`
+      3. Confirm the fullscreen prompt with your password
+   2. **Or** create the containers and start with step 7. of [the first example](#to-reproduce-the-issue-with-hostname-localhost-problem-occurring-in-firefox-perform-the-following-steps)
+6. After executing the VS Code task `nginx--update-configuration` you should see the following messages in the VS Code terminal:  
+   `...
+   Rendering vhost configuration for 'localhost' from '/manual-config/localhost.conf'.
+   ...
+   Rendering vhost configuration for 'tine.private' from '/manual-config/tine.private.conf'.
+   ...`  
+   If you see instead the following output:  
+   `...
+   Rendering vhost configuration for 'tine.private' from '/templates/vhost.template.conf'.
+   ...`  
+   in the output the custom configuration was not used (double check if the above steps were done correctly).
+
 ## the desired infrastructure setup visualized
 
 ![images/infrastructure-setup.png](images/infrastructure-setup.png "the desired infrastructure setup visualized")
