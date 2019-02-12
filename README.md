@@ -1,5 +1,7 @@
 # docker-app: tine20 -- issue - extra reverse proxy
 
+Issue was successfully resolved.
+
 ## To reproduce the issue with hostname "localhost" (problem occurring in Firefox), perform the following steps:
 
 1. Setup Ubuntu Bionic Desktop (minimal installation) in a virtual machine
