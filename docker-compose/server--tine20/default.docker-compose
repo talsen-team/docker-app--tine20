@@ -17,9 +17,9 @@ services:
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/var/log/letsencrypt/:/var/log/letsencrypt'
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server-nginx-certbot/var/log/nginx/:/var/log/nginx'
   server--tine20:
-#    build:
-#      context:      './../../docker/server--tine20'
-#      dockerfile:   'default.docker'
+    build:
+      context:      './../../docker/server--tine20'
+      dockerfile:   'default.docker'
     container_name: 'server--tine20'
     env_file:
       -             './../../container.env'
