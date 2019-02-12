@@ -17,3 +17,5 @@ services:
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/mysql:/var/lib/mysql'
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/tine20/files:/var/lib/tine20/files'
       -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/lib/tine20/setup:/var/lib/tine20/setup'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/log/apache2:/var/log/apache2'
+      -             '${HOST_PATH_TO_VOLUMES_ROOT}/server--tine/var/log/tine20:/var/log/tine20'

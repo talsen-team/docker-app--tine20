@@ -60,6 +60,11 @@ function check_system_environment() {
         echo >&2 "Environment variable named is ENV_TIMEZONE missing."
         exit 1
     fi
+    if [ -z "${ENV_SERVER_SCHEME}" ];
+    then
+        echo >&2 "Environment variable named is ENV_SERVER_SCHEME missing."
+        exit 1
+    fi
     if [ -z "${ENV_SERVER_NAME}" ];
     then
         echo >&2 "Environment variable named is ENV_SERVER_NAME missing."
@@ -168,6 +173,8 @@ function generate_tine20_php_configuration_file() {
         -e "s/\${TINE20_LOG_LEVEL}/${ENV_TINE20_LOG_LEVEL}/"            \
         -e "s/\${TINE20_SETUP_USERNAME}/${ENV_TINE20_SETUP_NAME}/"      \
         -e "s/\${TINE20_SETUP_USERPASS}/${ENV_TINE20_SETUP_PASS}/"      \
+        -e "s/\${SERVER_SCHEME}/${ENV_SERVER_SCHEME}/"                  \
+        -e "s/\${SERVER_NAME}/${ENV_SERVER_NAME}/"                      \
         "/templates/config.inc.php.dist"                                \
         > "/etc/tine20/config.inc.php"
     echo " * Generating tine20 php configuration file ... done"
