@@ -120,7 +120,6 @@ RUN apt-get update                                                              
  && mv /var/lib/mysql /import/var/lib/mysql                                                       \
  && echo "Storing mysql directory for import if required ... done"                                \
  && echo "Creating tine log and lib directories ..."                                              \
- && echo "Creating tine log and lib directories ... done"                                         \
  && mkdir --parents                     /var/log/tine20                                           \
  && chown www-data:www-data             /var/log/tine20                                           \
  && chmod --recursive 750               /var/log/tine20                                           \
@@ -131,6 +130,7 @@ RUN apt-get update                                                              
  && mkdir --parents                     /var/lib/tine20/tmp                                       \
  && chown --recursive www-data:www-data /var/lib/tine20                                           \
  && chmod --recursive 750               /var/lib/tine20                                           \
+ && echo "Creating tine log and lib directories ... done"                                         \
  && echo "Enable apache2 configuration for tine20 ..."                                            \
  && mkdir --parents /var/lib/apache2/conf/enabled_by_admin                                        \
  && touch           /var/lib/apache2/conf/enabled_by_admin/tine20                                 \
