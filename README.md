@@ -5,10 +5,15 @@ Issue was successfully resolved.
 ## To reproduce the issue with hostname "localhost" (problem occurring in Firefox), perform the following steps:
 
 1. Setup Ubuntu Bionic Desktop (minimal installation) in a virtual machine
-2. Install system updates and git   
+2. Install system updates, git, docker, docker-compose, VS Code and any ssh-askpass module  
    1. `sudo apt-get update`  
    2. `sudo apt-get dist-upgrade`
    3. `sudo apt-get install git`
+   4. Install [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+   5. Install [docker-compose](https://docs.docker.com/compose/install/) (not via apt-get, because the --detach flag is not supported by the apt-get installed version)
+   6. Install [VS Code](https://code.visualstudio.com/)
+   7. Install any [ssh-askpass](https://man.openbsd.org/ssh-askpass.1) to handle sudo prompts required for docker (VS Code does not run as root user, so in order to perform sudo operations the `sudo --askpass CMD` feature is used)  
+      e.g. `sudo apt-get install ssh-askpass-fullscreen`
 3. Reboot the VM (and maybe create a snapshot here)
 4. Clone this repository with this branch checked out  
    `git clone https://github.com/talsen-team/docker-app--tine20.git --recurse-submodules --branch=issue--tine20-extra-reverse-proxy`
@@ -31,7 +36,7 @@ Issue was successfully resolved.
       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--compose--up.sh . default.docker-compose`
    3. Confirm the fullscreen prompt with your password
 8. Wait until the images are pulled and both containers are started
-9. Wait until the nginx container has finished starting, after the file `volumes/server-nginx-certbot/cache/dhparams.pem` wait 2 moe seconds and the container is ready
+9. Wait until the nginx container has finished starting, after the file `volumes/server-nginx-certbot/cache/dhparams.pem` has been created wait 2 more seconds and the container is ready
 10. Perform the VS Code task `nginx--update-configuration`
     This task will create the nginx configuration which performs the http to https redirection using locally generated self-signed certificates.
     Use either the VS Code UI  
