@@ -28,6 +28,14 @@
    2. Run the task manually  
       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--image--build.sh . default.docker-compose`
    3. Confirm the fullscreen prompt with your password
+8. Update your container email configuration
+   1. Adjust the values of the following variables in your [container.env](container.env)
+   2. Uncomment and set `ENV_SSMTP_MAIL_HUB` to your mail hub smtp address and port
+   3. Uncomment and set `ENV_SSMTP_MAIL_AUTH_USER` to your mail which should send an email to itself
+   4. Uncomment and set `ENV_SSMTP_MAIL_AUTH_PASS` to the password of your specified email account
+   5. Uncomment and set `ENV_SSMTP_MAIL_AUTH_METHOD` to the appropriate ssmtp authentication method (PLAIN, LOGIN, ...)
+   6. Uncomment and set `ENV_SSMTP_MAIL_USE_TLS` to `YES` (must be ALL_UPPER) if the TLS flag should be set for ssmtp. If the flag should not be set just use any other value or comment the variable.
+   7. Uncomment and set `ENV_SSMTP_MAIL_USE_START_TLS` to `YES` (must be ALL_UPPER) if the STARTTLS flag should be set for ssmtp. If the flag should not be set just use any other value or comment the variable.
 9. Perform the VS Code task `docker-compose--compose--up`  
    This task will create and start required docker containers and networks.  
    Use either the VS Code UI  
@@ -42,14 +50,6 @@
    2. Run the task manually  
       `/bin/bash bash-util/elevate.sh root bash-commands/docker-compose--compose--up.sh . default.docker-compose`
    3. Confirm the fullscreen prompt with your password
-10. Update your container email configuration
-    1. Adjust the values of the following variables in your [container.env](container.env)
-    2. Uncomment and set `ENV_SSMTP_MAIL_HUB` to your mail hub smtp address and port
-    3. Uncomment and set `ENV_SSMTP_MAIL_AUTH_USER` to your mail which should send an email to itself
-    4. Uncomment and set `ENV_SSMTP_MAIL_AUTH_PASS` to the password of your specified email account
-    5. Uncomment and set `ENV_SSMTP_MAIL_AUTH_METHOD` to the appropriate ssmtp authentication method (PLAIN, LOGIN, ...)
-    6. Uncomment and set `ENV_SSMTP_MAIL_USE_TLS` to `YES` (must be ALL_UPPER) if the TLS flag should be set for ssmtp. If the flag should not be set just use any other value or comment the variable.
-    7. Uncomment and set `ENV_SSMTP_MAIL_USE_START_TLS` to `YES` (must be ALL_UPPER) if the STARTTLS flag should be set for ssmtp. If the flag should not be set just use any other value or comment the variable.
 11. While the container is starting attach to the container log
     1. Open an Ubuntu terminal
     2. `sudo docker logs server--tine20 --follow`
