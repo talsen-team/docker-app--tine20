@@ -147,6 +147,8 @@ COPY "./rootfs/etc/logrotate.d"                  \
              "/etc/logrotate.d"
 COPY "./rootfs/opt/server--tine20/entrypoint.sh" \
              "/opt/server--tine20/entrypoint.sh"
+COPY "./rootfs/opt/server--tine20/send-mail-via-ssmtp.sh" \
+             "/opt/server--tine20/send-mail-via-ssmtp.sh"
 COPY "./rootfs/templates"                        \
              "/templates"
 

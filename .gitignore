@@ -15,6 +15,7 @@
 !docker/server--tine20/rootfs/opt/
 !docker/server--tine20/rootfs/opt/server--tine20/
 !docker/server--tine20/rootfs/opt/server--tine20/entrypoint.sh
+!docker/server--tine20/rootfs/opt/server--tine20/send-mail-via-ssmtp.sh
 !docker/server--tine20/rootfs/templates/
 !docker/server--tine20/rootfs/templates/apache.conf
 !docker/server--tine20/rootfs/templates/config.inc.php.dist

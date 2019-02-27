@@ -284,6 +284,12 @@ VAR_SLEEP=${!}
 
 echo "Starting tine20 ... done"
 
+echo "Email verification inside the docker container ..."
+
+source /opt/server--tine20/send-mail-via-ssmtp.sh
+
+echo "Email verification inside the docker container ... done"
+
 trap 'echo "Stopping tine20 ...";      \
       kill -TERM ${VAR_SLEEP};         \
       service apache2 stop;            \

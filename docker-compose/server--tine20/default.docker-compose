@@ -8,7 +8,7 @@ services:
     container_name: 'server--tine20'
     env_file:
       -             './../../container.env'
-    image:          'talsenteam/docker-tine20:v2018.08.9'
+    image:          'talsenteam/docker-tine20:issue--tine20-tls-verification-error'
     ports:
       -             '80:80'
     restart:        'no'
