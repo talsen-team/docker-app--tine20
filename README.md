@@ -1,8 +1,8 @@
 # docker-app: tine20
 
-[![Docker Automated build](https://img.shields.io/docker/automated/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
-[![Docker Build Status](https://img.shields.io/docker/build/talsenteam/docker-tine20.svg?style=for-the-badge)](https://hub.docker.com/r/talsenteam/docker-tine20/)
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
 
 The server application tine20 ready to run inside a docker container.
 
