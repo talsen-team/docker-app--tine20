@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **Describe the enhancement**
-A clear and concise description of what the bug is.
+A clear and concise description of what the enhancement is.
 
 **Screenshots**
 If applicable, add screenshots to help explain your enhancement.
