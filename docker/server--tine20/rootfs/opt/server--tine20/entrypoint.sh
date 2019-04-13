@@ -265,7 +265,7 @@ then
     create_tine20_database_if_database_directory_is_empty                       ${VAR_IS_DATABASE_DIRECTORY_EMPTY}
     install_tine20_applications
 
-    touch "${CONST_MARKER_FOR_SUCCESSFUL_SETUP}"
+    echo "${TINE20_VERSION}" > "${CONST_MARKER_FOR_SUCCESSFUL_SETUP}"
     echo "Performing tine20 setup ... done"
 fi
 

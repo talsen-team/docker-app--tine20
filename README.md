@@ -15,6 +15,8 @@ All subsequent startups just start the application.
 Whether the tine20 setup was already performed is detected whether the file "/var/lib/tine20/setup/.setup-was-successful" exists inside the container.
 To persist this information the volume /var/lib/tine20/setup is mapped to the host.
 
+since v2019.02.4: The version which performed the setup successfully is stored inside the marker file "/var/lib/tine20/setup/.setup-was-successful".
+
 ## how to use
 
 To easily experiment with tine20, the following pre-requisites are preferred:
