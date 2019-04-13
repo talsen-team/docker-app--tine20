@@ -8,8 +8,9 @@ The server application tine20 ready to run inside a docker container.
 
 ## container startup modes
 
-The containers have two different modes of startup.
-The first mode is executing the tine20 setup and continues with the second mode, the second mode just runs tine20.
+The container has two different startup sequences.
+When initially starting the container on a clean volume mapping, tine20 installs and configures relevant parts of the application, afterwards the application starts and can be used.
+All subsequent startups just start the application.
 
 Whether the tine20 setup was already performed is detected whether the file "/var/lib/tine20/setup/.setup-was-successful" exists inside the container.
 To persist this information the volume /var/lib/tine20/setup is mapped to the host.
