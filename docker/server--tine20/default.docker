@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV TINE20_VERSION=2019.02.8
 
-ENV TINE20_PACKAGE_BASEURL=http://packages.tine20.org/source
+ENV TINE20_PACKAGE_BASEURL=https://packages.tine20.org/source
 
 ENV TINE20_SHA_PACKAGE_FILENAME=sha1sum_${TINE20_VERSION}.txt
 ENV TINE20_SHA_PACKAGE_URL=${TINE20_PACKAGE_BASEURL}/${TINE20_VERSION}/${TINE20_SHA_PACKAGE_FILENAME}
@@ -88,10 +88,10 @@ RUN apt-get update                                                              
  && mkdir --parents /usr/share/tine20                                                             \
  && cd /tmp                                                                                       \
  && echo "Fetching tine20 archive files ..."                                                      \
- && wget ${TINE20_SHA_PACKAGE_URL}                                                                \
- && wget ${TINE20_AIO_PACKAGE_URL}                                                                \
- && wget ${TINE20_HRS_PACKAGE_URL}                                                                \
- && wget ${TINE20_INV_PACKAGE_URL}                                                                \
+ && wget --no-check-certificate ${TINE20_SHA_PACKAGE_URL}                                                                \
+ && wget --no-check-certificate ${TINE20_AIO_PACKAGE_URL}                                                                \
+ && wget --no-check-certificate ${TINE20_HRS_PACKAGE_URL}                                                                \
+ && wget --no-check-certificate ${TINE20_INV_PACKAGE_URL}                                                                \
  && echo "Fetching tine20 archive files ... done"                                                 \
  && echo "Verify sha1sums of tine20 archive files ..."                                            \
  && grep --line-number $( sha1sum ${TINE20_AIO_PACKAGE_FILENAME} ) ${TINE20_SHA_PACKAGE_FILENAME} \
