@@ -1,5 +1,6 @@
 # docker-app: tine20
 
+![GitHub tag (latest by date)](https://img.shields.io/github/tag-date/talsen-team/docker-app--tine20.svg?style=for-the-badge)
 [![Docker Automated build](https://img.shields.io/docker/cloud/automated/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/talsenteam/docker-tine20.svg?style=for-the-badge)](//hub.docker.com/r/talsenteam/docker-tine20/)
