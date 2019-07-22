@@ -278,6 +278,19 @@ then
     echo "Performing tine20 setup ... done"
 fi
 
+if [ -f "${CONST_MARKER_FOR_SUCCESSFUL_SETUP}" ];
+then
+    echo "Performing tine20 upgrade ..."
+    if [ "${TINE20_VERSION}" = "$( cat ${CONST_MARKER_FOR_SUCCESSFUL_SETUP} )" ];
+    then
+        echo "Performing tine20 upgrade ... skipped"
+    else
+        php update.php --update
+        echo "${TINE20_VERSION}" > "${CONST_MARKER_FOR_SUCCESSFUL_SETUP}"
+        echo "Performing tine20 upgrade ... done"
+    fi
+fi
+
 echo "Starting tine20 ..."
 
 ensure_correct_ownership_of_tine20_etc_directory
