@@ -235,9 +235,9 @@ function map_tine20_php_configuration_file_to_web_root_directory() {
         ln --symbolic --force               \
            /etc/tine20/config.inc.php       \
            /usr/share/tine20/config.inc.php
-        echo " * Link tine20 php configuration to web root directory ... skipped"
-    else
         echo " * Link tine20 php configuration to web root directory ... done"
+    else
+        echo " * Link tine20 php configuration to web root directory ... skipped"
     fi
 }
 
