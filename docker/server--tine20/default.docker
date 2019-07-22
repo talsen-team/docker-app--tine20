@@ -18,6 +18,9 @@ ENV TINE20_HRS_PACKAGE_URL=${TINE20_PACKAGE_BASEURL}/${TINE20_VERSION}/${TINE20_
 ENV TINE20_INV_PACKAGE_FILENAME=tine20-inventory_${TINE20_VERSION}.tar.bz2
 ENV TINE20_INV_PACKAGE_URL=${TINE20_PACKAGE_BASEURL}/${TINE20_VERSION}/${TINE20_INV_PACKAGE_FILENAME}
 
+ENV TINE20_PRJ_PACKAGE_FILENAME=tine20-projects_${TINE20_VERSION}.tar.bz2
+ENV TINE20_PRJ_PACKAGE_URL=${TINE20_PACKAGE_BASEURL}/${TINE20_VERSION}/${TINE20_PRJ_PACKAGE_FILENAME}
+
 RUN apt-get update                                                                                \
  && apt-get install -y --no-install-recommends                                                    \
                    # tine20 dependencies                                                          \
@@ -68,6 +71,7 @@ RUN apt-get update                                                              
                    multiarch-support                                                              \
                    mysql-server                                                                   \
                    php-common                                                                     \
+                   php7.2-bcmath                                                                  \
                    php7.2-cli                                                                     \
                    php7.2-common                                                                  \
                    php7.2-gd                                                                      \
@@ -88,26 +92,30 @@ RUN apt-get update                                                              
  && mkdir --parents /usr/share/tine20                                                             \
  && cd /tmp                                                                                       \
  && echo "Fetching tine20 archive files ..."                                                      \
- && wget --no-check-certificate ${TINE20_SHA_PACKAGE_URL}                                                                \
- && wget --no-check-certificate ${TINE20_AIO_PACKAGE_URL}                                                                \
- && wget --no-check-certificate ${TINE20_HRS_PACKAGE_URL}                                                                \
- && wget --no-check-certificate ${TINE20_INV_PACKAGE_URL}                                                                \
+ && wget --no-check-certificate ${TINE20_SHA_PACKAGE_URL}                                         \
+ && wget --no-check-certificate ${TINE20_AIO_PACKAGE_URL}                                         \
+ && wget --no-check-certificate ${TINE20_HRS_PACKAGE_URL}                                         \
+ && wget --no-check-certificate ${TINE20_INV_PACKAGE_URL}                                         \
+ && wget --no-check-certificate ${TINE20_PRJ_PACKAGE_URL}                                         \
  && echo "Fetching tine20 archive files ... done"                                                 \
  && echo "Verify sha1sums of tine20 archive files ..."                                            \
  && grep --line-number $( sha1sum ${TINE20_AIO_PACKAGE_FILENAME} ) ${TINE20_SHA_PACKAGE_FILENAME} \
  && grep --line-number $( sha1sum ${TINE20_HRS_PACKAGE_FILENAME} ) ${TINE20_SHA_PACKAGE_FILENAME} \
  && grep --line-number $( sha1sum ${TINE20_INV_PACKAGE_FILENAME} ) ${TINE20_SHA_PACKAGE_FILENAME} \
+ && grep --line-number $( sha1sum ${TINE20_PRJ_PACKAGE_FILENAME} ) ${TINE20_SHA_PACKAGE_FILENAME} \
  && echo "Verify sha1sums of tine20 archive files ... done"                                       \
  && echo "Extracting tine20 archive files ..."                                                    \
  && tar --extract --bzip2 --file=${TINE20_AIO_PACKAGE_FILENAME} --directory=/usr/share/tine20     \
  && tar --extract --bzip2 --file=${TINE20_HRS_PACKAGE_FILENAME} --directory=/usr/share/tine20     \
  && tar --extract --bzip2 --file=${TINE20_INV_PACKAGE_FILENAME} --directory=/usr/share/tine20     \
+ && tar --extract --bzip2 --file=${TINE20_PRJ_PACKAGE_FILENAME} --directory=/usr/share/tine20     \
  && echo "Extracting tine20 archive files ... done"                                               \
  && echo "Removing tin20 leftovers ..."                                                           \
  && rm --force ${TINE20_SHA_PACKAGE_FILENAME}                                                     \
  && rm --force ${TINE20_AIO_PACKAGE_FILENAME}                                                     \
  && rm --force ${TINE20_HRS_PACKAGE_FILENAME}                                                     \
  && rm --force ${TINE20_INV_PACKAGE_FILENAME}                                                     \
+ && rm --force ${TINE20_PRJ_PACKAGE_FILENAME}                                                     \
  && rm --force /usr/share/tine20/config.inc.php.dist                                              \
  && echo "Removing tin20 leftovers ... done"                                                      \
  && cd /                                                                                          \
