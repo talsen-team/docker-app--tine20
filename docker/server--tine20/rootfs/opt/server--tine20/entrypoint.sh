@@ -119,6 +119,12 @@ function ensure_correct_ownership_of_tine20_etc_directory() {
     echo " * Setting correct ownership for /etc/tine20/ ... done"
 }
 
+function ensure_correct_ownership_of_mysql_directory() {
+    echo " * Setting correct ownership for /var/lib/mysql/ ..."
+    chown mysql/mysql -R  /var/lib/mysql
+    echo " * Setting correct ownership for /var/lib/mysql/ ... done"
+}
+
 function generate_timezone_information() {
     echo " * Generating timezone information ..."
     ln -fns "/usr/share/zoneinfo/${ENV_TIMEZONE}" "/etc/localtime"
@@ -260,6 +266,7 @@ fi
 echo "Starting tine20 ..."
 
 ensure_correct_ownership_of_tine20_etc_directory
+ensure_correct_ownership_of_mysql_directory
 keep_timezone_information_up_to_date
 enable_tine20_apache_configuration
 configure_apache2_server_name
