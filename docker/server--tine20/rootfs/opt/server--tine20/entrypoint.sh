@@ -121,7 +121,7 @@ function ensure_correct_ownership_of_tine20_etc_directory() {
 
 function ensure_correct_ownership_of_mysql_directory() {
     echo " * Setting correct ownership for /var/lib/mysql/ ..."
-    chown mysql/mysql -R  /var/lib/mysql
+    chown mysql:mysql -R  /var/lib/mysql
     echo " * Setting correct ownership for /var/lib/mysql/ ... done"
 }
 
