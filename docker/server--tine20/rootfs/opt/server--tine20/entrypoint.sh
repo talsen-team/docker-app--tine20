@@ -285,7 +285,7 @@ then
     then
         echo "Performing tine20 upgrade ... skipped"
     else
-        php update.php --update
+        php setup.php --update
         echo "${TINE20_VERSION}" > "${CONST_MARKER_FOR_SUCCESSFUL_SETUP}"
         echo "Performing tine20 upgrade ... done"
     fi
