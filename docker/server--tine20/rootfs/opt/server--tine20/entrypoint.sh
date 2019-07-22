@@ -218,12 +218,27 @@ function install_tine20_applications() {
 }
 
 function enable_tine20_apache_configuration() {
+    echo " * Enable tine20 apache configuration ..."
     ln --symbolic --force                      \
        /etc/tine20/apache.conf                 \
        /etc/apache2/conf-available/tine20.conf \
  && ln --symbolic --force                      \
        /etc/apache2/conf-available/tine20.conf \
        /etc/apache2/conf-enabled/tine20.conf
+    echo " * Enable tine20 apache configuration ... done"
+}
+
+function map_tine20_php_configuration_file_to_web_root_directory() {
+    echo " * Link tine20 php configuration to web root directory ..."
+    if [ -f "/etc/tine20/config.inc.php" ];
+    then
+        ln --symbolic --force               \
+           /etc/tine20/config.inc.php       \
+           /usr/share/tine20/config.inc.php
+        echo " * Link tine20 php configuration to web root directory ... skipped"
+    else
+        echo " * Link tine20 php configuration to web root directory ... done"
+    fi
 }
 
 function configure_apache2_server_name() {
@@ -268,6 +283,7 @@ echo "Starting tine20 ..."
 ensure_correct_ownership_of_tine20_etc_directory
 ensure_correct_ownership_of_mysql_directory
 keep_timezone_information_up_to_date
+map_tine20_php_configuration_file_to_web_root_directory
 enable_tine20_apache_configuration
 configure_apache2_server_name
 
