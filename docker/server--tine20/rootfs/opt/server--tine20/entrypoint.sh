@@ -180,7 +180,7 @@ function generate_tine20_php_configuration_file() {
     echo " * Generating tine20 php configuration file ... done"
 }
 
-generate_tine20_apache_configuration_file() {
+function generate_tine20_apache_configuration_file() {
     echo " * Generating tine20 apache configuration file ..."
     sed -e "s/\${SERVER_NAME}/${ENV_SERVER_NAME}/g" \
         "/templates/apache.conf"                    \
