@@ -87,10 +87,6 @@ function check_system_environment_validity() {
         echo >&2 "Error: Provided database user name '${ENV_TINE20_DB_USERNAME}' contains invalid characters."
         exit 1
     fi
-    if ! [[ "${ENV_TINE20_DB_USERPASS}" =~ ^[0-9a-zA-Z.]+$ ]]; then
-        echo >&2 "Error: Provided database user password '${ENV_TINE20_DB_USERPASS}' contains invalid characters."
-        exit 1
-    fi
     if ! [[ "${ENV_TINE20_LOG_LEVEL}" =~ ^[0-9]+$ ]]; then
         echo >&2 "Error: Provided tine log level '${ENV_TINE20_LOG_LEVEL}' contains invalid characters."
         exit 1
@@ -99,16 +95,8 @@ function check_system_environment_validity() {
         echo >&2 "Error: Provided admin user name '${ENV_TINE20_ADMIN_NAME}' contains invalid characters."
         exit 1
     fi
-    if ! [[ "${ENV_TINE20_ADMIN_PASS}" =~ ^[0-9a-zA-Z.]+$ ]]; then
-        echo >&2 "Error: Provided admin user  password '${ENV_TINE20_ADMIN_PASS}' contains invalid characters."
-        exit 1
-    fi
     if ! [[ "${ENV_TINE20_SETUP_NAME}" =~ ^[0-9a-zA-Z.]+$ ]]; then
         echo >&2 "Error: Provided setup user name '${ENV_TINE20_SETUP_NAME}' contains invalid characters."
-        exit 1
-    fi
-    if ! [[ "${ENV_TINE20_SETUP_PASS}" =~ ^[0-9a-zA-Z.]+$ ]]; then
-        echo >&2 "Error: Provided setup user password '${ENV_TINE20_SETUP_PASS}' contains invalid characters."
         exit 1
     fi
     if ! [[ "${ENV_SERVER_NAME}" =~ ^[0-9a-zA-Z.]+$ ]]; then
