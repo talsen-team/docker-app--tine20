@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV TINE20_VERSION=2020.03.4
+ENV TINE20_VERSION=2020.08.1
 
 ENV TINE20_PACKAGE_BASEURL=https://packages.tine20.org/source
 
@@ -155,6 +155,8 @@ COPY "./rootfs/etc/logrotate.d"                  \
              "/etc/logrotate.d"
 COPY "./rootfs/opt/server--tine20/entrypoint.sh" \
              "/opt/server--tine20/entrypoint.sh"
+COPY "./rootfs/usr"                              \
+             "/usr"
 COPY "./rootfs/templates"                        \
              "/templates"
 
