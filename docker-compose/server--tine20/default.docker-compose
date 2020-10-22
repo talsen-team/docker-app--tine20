@@ -8,7 +8,7 @@ services:
     container_name: 'server--tine20'
     env_file:
       -             './../../container.env'
-    image:          'talsenteam/docker-tine20:v2020.08.1'
+    image:          'talsenteam/docker-tine20:v2020.08.3'
     ports:
       -             '80:80'
     restart:        'no'

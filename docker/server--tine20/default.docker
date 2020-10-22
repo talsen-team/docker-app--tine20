@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV TINE20_VERSION=2020.08.1
+ENV TINE20_VERSION=2020.08.3
 
 ENV TINE20_PACKAGE_BASEURL=https://packages.tine20.org/source
 
