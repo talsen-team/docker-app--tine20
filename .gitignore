@@ -18,6 +18,11 @@
 !docker/server--tine20/rootfs/templates/
 !docker/server--tine20/rootfs/templates/apache.conf
 !docker/server--tine20/rootfs/templates/config.inc.php.dist
+!docker/server--tine20/rootfs/usr/
+!docker/server--tine20/rootfs/usr/share/
+!docker/server--tine20/rootfs/usr/share/tine20/
+!docker/server--tine20/rootfs/usr/share/tine20/favicon/
+!docker/server--tine20/rootfs/usr/share/tine20/favicon/32
 !docker/server--tine20/default.docker
 !docker-compose/
 !docker-compose/server--tine20/
