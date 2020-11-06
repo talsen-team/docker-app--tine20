@@ -23,6 +23,8 @@
 !docker/server--tine20/rootfs/usr/share/tine20/
 !docker/server--tine20/rootfs/usr/share/tine20/favicon/
 !docker/server--tine20/rootfs/usr/share/tine20/favicon/*
+!docker/server--tine20/rootfs/usr/share/tine20/logo/
+!docker/server--tine20/rootfs/usr/share/tine20/logo/*
 !docker/server--tine20/default.docker
 !docker-compose/
 !docker-compose/server--tine20/
